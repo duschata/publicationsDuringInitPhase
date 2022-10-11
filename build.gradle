@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+
+group = 'com.example'
+version = '1.0'
+
+
+gradlePlugin {
+    plugins {
+        myPlugin {
+            id = "my-plugin"
+            implementationClass = "com.example.MyPlugin"
+        }
+    }
+}
+
+allprojects {
+    afterEvaluate { project ->
+        if (project.plugins.hasPlugin("maven-publish")) {
+            def publicationNames = project.publishing.publications.collect { it.name }.toArray()
+            println("After Init-Phase: ${project}:${publicationNames}")
+        }
+    }
+}
+
+publishing {
+    publications {
+        pluginMaven(MavenPublication) {
+        }
+    }
+}

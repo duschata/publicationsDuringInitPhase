@@ -1,0 +1,10 @@
+rootProject {
+    allprojects {
+        afterEvaluate { project ->
+            if (project.plugins.hasPlugin("maven-publish")) {
+                def publicationNames = project.publishing.publications.collect { it.name }.toArray()
+                println("During: Init-Phase: ${project}:${publicationNames}")
+            }
+        }
+    }
+}
