@@ -20,4 +20,5 @@ After Init-Phase: root project 'myPublish':[myPluginPluginMarkerMaven, pluginMav
 
 expected output:
 
+Same behavior as gradle < 5.0:  
 An array which contains `myPluginPluginMarkerMaven` publication in the init-phase too. 
